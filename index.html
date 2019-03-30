@@ -1,18 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DisPleasure</title>
+  <!-- jQuery --------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Bootstrap CDN--------------->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="reset" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-    
+  <header>
+    <!-- Main title -->
+    <div class="row">
+      <div class="col-12" id="mainTitle">
+        <h1>Title</h1>
+      </div>
+    </div>
+    <!-- Nav bar -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript"></script>
-    <script type="text/javascript" src="javacript/app.js"></script>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </header>
+  <div class="container">
+    <!-- Main content area of page -->
 
-    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"> </script>
+    <div class="jumbotron jumbotron-fluid">
+      <h1 class="display-4">Title Here</h1>
+      <p class="lead">Put the content here</p>
+    </div>
+    <!-- First Row -->
+    <div class="row">
+      <!-- First Column size8 -->
+      <div class="col-md-8">
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="col-md-12">
+              <form>
+                <div class="form-group">
+                  <label for="searchTerm">Search Term</label>
+                  <input type="text" class="form-control" id="search" placeholder="">
+                </div>
+                <button type="submit" class="btn btn-primary" id="btn_search">Search</button>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Second Column -->
+      <div class="" id="map">
+          <iframe frameborder="1" style="border:0"
+            src="https://www.google.com/maps/embed/v1/search?key=AIzaSyBac2HUKDso4kbbD1NbvLWvtfeWvpdVuWA&q=richmond, va"
+            allowfullscreen>
+          </iframe>
+        </div>
+    </div>
+
+
+
+    <!-- end of container -->
+  </div>
+  <!-- Out javascript file -->
+  <script src="javacript/app.js"></script>
 </body>
+
 </html>

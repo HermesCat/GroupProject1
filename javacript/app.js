@@ -18,3 +18,9 @@ $.ajax({
 // fetch(req).then(function(response) {
 //         console.log(response.json());
 //     }); 
+console.log("stuff");
+
+
+
+
+
