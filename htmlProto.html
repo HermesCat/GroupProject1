@@ -8,236 +8,260 @@
   <title>My News Aggregate</title>
   <!-- Bootstrap CDNs--------------->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>  <!-- jQuery -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- jQuery -->
   <link rel="reset" href="css/reset.css">
   <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet"> <!-- google font -->
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> <!-- google font -->
   <link rel="stylesheet" href="css/style.css">
+  <!-- Firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 
 </head>
 
 <body>
   <div class="container-fluid">
     <header>
-            <!-- Main title -->
-        <div class= "row">
-            <div class= "col-6">
-            <h1 id="mainTitle">
+      <!-- Main title -->
+      <div class="row">
+        <div class="col-6">
+          <h1 id="mainTitle">
             <span class="highlighter">My</span>News Aggregate
-            </h1>
-            </div>
-            <!-- navs -->
-            <div class="col-6">
-              <div class="navItems">
-                <ul class="nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">HOME</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">ABOUT</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">CONTACT</a>
-                  </li>
-                </ul>
-                <!----- login/sign up buttons ---------------------------------------------------------------------------------->
-                <div class="row">
-                  <div class="col-md-12" id="buttonList">
-                    <!-- Button trigger modal -->
-                    <button type="button" data-toggle="modal" data-target="#loginModal">
-                      Login
-                    </button>
-            
-                   <!-- Modal -->
-                   <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
-                      <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate</h1>
-                              </div>
-                              <div class="modal-body">
-                                <h3>User Login</h3>
-                                          <label for="searchTerm">Email Adress</label>
-                                          <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
-                                          <label for="searchTerm">Password</label>
-                                          <input type="password" class="form-control" id="Password1">
-                                         
-                                      </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">Login</button>
-                                      <button class="button" data-dismiss="modal" >Cancel</button>
-                                  </div>
-                              </div>
-                        </div>
-                      </div>
-
-<!-- button 2 -->
-                    <!-- Button trigger modal -->
-                    <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">
-                        Sign-Up
-                      </button>
-              
-                      <!-- Modal -->
-                      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
-                        <div class="modal-dialog modal-lg">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate</h1>
-                                </div>
-                                <div class="modal-body">
-                                  <h3>Sign-Up</h3>
-                                            <label for="searchTerm">Email Adress</label>
-                                            <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
-                                            <label for="searchTerm">Password</label>
-                                            <input type="password" class="form-control" id="Password1">
-                                            <label for="searchTerm">Re-Type Password</label>
-                                            <input type="password" class="form-control" id="Password2">
-                                        </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">Register</button>
-                                        <button class="button" data-dismiss="modal" >Cancel</button>
-                                    </div>
-                                </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </h1>
         </div>
-</header>
+        <!-- navs -->
+        <div class="col-6">
+          <div class="navItems">
+            <ul class="nav">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">CONTACT</a>
+              </li>
+            </ul>
+            <!----- login/sign up buttons ---------------------------------------------------------------------------------->
+            <div class="row">
+              <div class="col-md-12" id="buttonList">
+                <!-- Button trigger modal -->
+                <button type="button" data-toggle="modal" data-target="#loginModal">
+                  Login
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate</h1>
+                      </div>
+                      <div class="modal-body">
+                        <h3>User Login</h3>
+                        <label for="searchTerm">Email Adress</label>
+                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
+                        <label for="searchTerm">Password</label>
+                        <input type="password" class="form-control" id="Password1">
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">Login</button>
+                        <button class="button" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- button 2 -->
+                <!-- Button trigger modal -->
+                <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">
+                  Sign-Up
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate</h1>
+                      </div>
+                      <div class="modal-body">
+                        <h3>Sign-Up</h3>
+                        <label for="searchTerm">Email Adress</label>
+                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
+                        <label for="searchTerm">Password</label>
+                        <input type="password" class="form-control" id="Password1">
+                        <label for="searchTerm">Re-Type Password</label>
+                        <input type="password" class="form-control" id="Password2">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="hot" data-toggle="modal"
+                          data-target="#signUpModal">Register</button>
+                        <button class="button" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </header>
 
 
-<!-- All content will be inside the jumbotron -->
-<div class="jumbotron jumbotron-fluid" id="showcase">
-<!-- This row will separate the two main elements of the page SEARCH/RESULTS -->
-    <div class="row">
-<!---------- Search side ------------------------------------------------------------------------------------------------------------------------------------------------------------>
-        <div class = "col-4">
-                <div class="card">
-                        <div class="card-body">
-                                <h1 class="display-6">My Searches</h1>
-                                <p class="lead">These are your saved searches.</p>
-                                <div class="card" id="buttonCard">
-                                        <h3>Your Keywods</h3>
-                                  <!-- The User Search Buttons will go here -->
-                                        <ul class = "userButton">
-                                            <button>Dogs</button>
-                                            <button>Cats</button>
-                                            <button>Penguins</button>
-                                            <button>Florida</button>
-                                            <button>Fans</button>
-                                            <button>Anime Girls</button>
-                                        </ul>
-                              </div>
+    <!-- All content will be inside the jumbotron -->
+    <div class="jumbotron jumbotron-fluid" id="showcase">
+      <!-- This row will separate the two main elements of the page SEARCH/RESULTS -->
+      <div class="row">
+        <!---------- Search side ------------------------------------------------------------------------------------------------------------------------------------------------------------>
+        <div class="col-4">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="display-6">My Searches</h1>
+              <p class="lead">These are your saved searches.</p>
+              <div class="card" id="buttonCard">
+                <h3>Your Keywods</h3>
+                <!-- The User Search Buttons will go here -->
+                <ul class="userButton">
+                  <button>Dogs</button>
+                  <button>Cats</button>
+                  <button>Penguins</button>
+                  <button>Florida</button>
+                  <button>Fans</button>
+                  <button>Anime Girls</button>
+                </ul>
+              </div>
 
-<!-- This is the search result Column -->
-<div class="card-mb-4">
-        <div class="card-body">
-            <div class="col-md-12">
-                <form>
-                    <div class="form-group">
+              <!-- This is the search result Column -->
+              <div class="card-mb-4">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <form>
+                      <div class="form-group">
                         <label for="searchTerm">Search Term</label>
                         <input type="text" class="form-control" id="search" placeholder="ex. Restaurants">
                         <label for="searchTerm">Location</label>
                         <input type="text" class="form-control" id="location" placeholder="ex. San Francisco">
 
-                    </div>
-                    <div class= "row">
-                      <div class="col-md-4"> <button>Search</button> </div>
-                      <div class="col-md-8"><input type="checkbox" class="form-check-input" id="rememberMe">
-                      <label class="form-check-label" for="Remember" id="rememberText">Remember Me</label></div>
-                    </div>
-                </form>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4"> <button>Search</button> </div>
+                        <div class="col-md-8"><input type="checkbox" class="form-check-input" id="rememberMe">
+                          <label class="form-check-label" for="Remember" id="rememberText">Remember Me</label></div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+              </div>
+              <!-- end of search card -->
+            </div>
+          </div>
+        </div>
+        <!--- results side ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
+        <div class="col-8">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="display-6">Search Results</h1>
+            </div>
+            <!-- Google map will be appended here. --------------------->
+            <div class="" id="map">
 
             </div>
-        </div>
-    </div>
-<!-- end of search card -->
-        </div>              
-    </div>
-</div>
-<!--- results side ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
-        <div class = "col-8">
-                <div class="card">
-                        <div class="card-body">
-                                <h1 class="display-6">Search Results</h1>
-                        </div>
-            <!-- Google map will be appended here. --------------------->
-                        <div class="" id="map">
-                               
-                        </div>
-          <!-- Top and most recent article buttons -->
-                <div class = "col-md-12" id="articleButtons">
-                                <button id="topArticle">Top Articles</button>
-                                <button id="mostRecent">Most Recent</button>
-           <!-- Articles and links will be posted here. Its a media box nested withing a card body-->
-           <div class="card">
-            <div class="card-body" id= "articleAppendBox">
-              
-            <!-- we will append something like this with jQuery -->
-                <div class="media">
-                    <img src="https://www.metro.us/sites/default/files/main/articles/2019/03/20/ncaa_free_college_basketball_tournament_live_stream_streaming_link.jpg" height="150" width="150" class="align-self-start mr-3" alt="...">
+            <!-- Top and most recent article buttons -->
+            <div class="col-md-12" id="articleButtons">
+              <button id="topArticle">Top Articles</button>
+              <button id="mostRecent">Most Recent</button>
+              <!-- Articles and links will be posted here. Its a media box nested withing a card body-->
+              <div class="card">
+                <div class="card-body" id="articleAppendBox">
+
+                  <!-- we will append something like this with jQuery -->
+                  <div class="media">
+                    <img
+                      src="https://www.metro.us/sites/default/files/main/articles/2019/03/20/ncaa_free_college_basketball_tournament_live_stream_streaming_link.jpg"
+                      height="150" width="150" class="align-self-start mr-3" alt="...">
                     <div class="media-body">
                       <h5 class="mt-0">Duke Wins Again</h5>
-                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                        nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
                     </div>
                   </div>
                   <hr>
-            <!-- this is the end of the first article -->
-            <!-- we will append something like this with jQuery -->
-            <div class="media">
-                <img src="https://www.philly.com/resizer/FGaIoEePkpnEubol94Xe08rZx78=/1400x932/smart/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/QKEZHVDLGVAONDCZTE5RJJWBTY.jpg" height="150" width="150" class="align-self-start mr-3" alt="...">
-                <div class="media-body">
-                  <h5 class="mt-0">People Are Still Playing Soccer?</h5>
-                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                  <!-- this is the end of the first article -->
+                  <!-- we will append something like this with jQuery -->
+                  <div class="media">
+                    <img
+                      src="https://www.philly.com/resizer/FGaIoEePkpnEubol94Xe08rZx78=/1400x932/smart/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/QKEZHVDLGVAONDCZTE5RJJWBTY.jpg"
+                      height="150" width="150" class="align-self-start mr-3" alt="...">
+                    <div class="media-body">
+                      <h5 class="mt-0">People Are Still Playing Soccer?</h5>
+                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                        nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- this is the end of the second article -->
+                  <!-- we will append something like this with jQuery -->
+                  <div class="media">
+                    <img
+                      src="https://pulse-static-files.s3.amazonaws.com/worldrugby/photo/2018/09/15/eead1477-29b0-4082-929a-9022c2051d27/1033513342.jpg"
+                      height="150" width="150" class="align-self-start mr-3" alt="...">
+                    <div class="media-body">
+                      <h5 class="mt-0">Is Rugby The New Footbal: Probably Not</h5>
+                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
+                        nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <!-- this is the end of the thrd article -->
                 </div>
               </div>
-              <hr>
-        <!-- this is the end of the second article -->
-        <!-- we will append something like this with jQuery -->
-        <div class="media">
-            <img src="https://pulse-static-files.s3.amazonaws.com/worldrugby/photo/2018/09/15/eead1477-29b0-4082-929a-9022c2051d27/1033513342.jpg" height="150" width="150" class="align-self-start mr-3" alt="...">
-            <div class="media-body">
-              <h5 class="mt-0">Is Rugby The New Footbal: Probably Not</h5>
-              <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+
+
+
+
+
             </div>
           </div>
-          <hr>
-    <!-- this is the end of the thrd article -->
-            </div>
-          </div>
-
-
-
-
-
-                          </div>
-                </div>
 
         </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <!-- end of container -->
     </div>
 
+    <footer>
+      <h4>My News Aggragate &copy;</h4>
+    </footer>
+    <!-- Out javascript file -->
 
-
-
-
-
-
-
-
-    <!-- end of container -->
-  </div>
-
-  <footer>
-    <h4>My News Aggragate</h4>
-  </footer>
-  <!-- Out javascript file -->
-
-<script src="javacript/app.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="javacript/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 
 </body>
 
