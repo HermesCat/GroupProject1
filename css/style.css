@@ -1,3 +1,9 @@
 #mainTitle {
     text-align: center;
 }
+
+#rememberMe {
+    margin-left: 2px;
+} #rememberText {
+    margin-left: 15px;
+}
