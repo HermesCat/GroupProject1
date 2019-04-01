@@ -1,3 +1,118 @@
-#mainTitle {
+
+
+header {
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+
+
+footer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #c5cad1;
+    color: white;
     text-align: center;
+  }
+
+
+
+.container-fluid {
+    width: 80%
+}
+
+#showcase{
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+#mainTitle {
+    display: inline-block;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bolder;
+    letter-spacing: -1px;
+}
+
+h1 .highlighter {
+    background: red;
+    color: #ffffff;
+    padding: 3px 15px 3px 15px;
+    padding
+}
+
+
+.navItems {
+    float: right;
+    
+}
+
+.nav-link {
+    decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    color: red;
+}
+
+.nav-link:hover {
+    color: #302d2d;
+    font-weight: bolder;
+  }
+/* Had to do a lot of tinkering with the login and sign-up buttons */
+#buttonList{
+    float:right;
+    left: 90px;
+}
+#rememberMe {
+    margin-left: 2px;
+    margin-right: 1px;
+ } 
+ #rememberText {
+    margin-left: 15px;
+    padding-left: 3px;
+ }
+
+.media:hover {
+    background: #c5cad1;
+    cursor: pointer;
+}
+
+#map {
+    text-align: center;
+}
+
+
+/*----------------- button formating ---------------------------------------------------------------------  */
+  button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 1rem;
+    margin: 1px;
+    text-decoration: none;
+    background: #c5cad1;
+    color: #302d2d;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: #8a8d91;
+}
+
+button:active {
+    transform: scale(0.99);
+    background: #302d2d;
+}
+
+.hot{
+    background: red;
 }
