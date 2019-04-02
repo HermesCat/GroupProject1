@@ -17,26 +17,26 @@ $("#register").on("click", function (event) {
     event.preventDefault();
 
     // Grabs the input fields, not working at the moment, except for retypePassword
-    var email = $("#emailInput").val().trim();
-    var password = $("#Password1").val().trim();
-    var retypePassword = $("#Password2").val().trim();
+    var email = $("#signUpModal #emailInput").val().trim();
+    var password = $("#signUpModal #Password1").val().trim();
+    var retypePassword = $("#signUpModal #Password2").val().trim();
     console.log(email);
     console.log(password)
     console.log(retypePassword);
 
     // Set for local storage
-    var newUser = {
-        email: email,
-        password: password
-    }    
+    // var newUser = {
+    //     email: email,
+    //     password: password
+    // }    
 
     // validates that the passwords match upon registration
-    if (Password1 === Password2){
-        database.ref().push(newUser);
-    } else {
-        alert("Those Passwords do not match, try again.")
-    }
-})
+    // if (Password1 === Password2){
+    //     database.ref().push(newUser);
+    // } else {
+    //     alert("Those Passwords do not match, try again.")
+    // }
+});
 
 
 // API KEY
@@ -65,9 +65,9 @@ $("#btn_search").on("click", function () {
 //     }); 
 console.log("stuff");
 
-var placeSearch = "richmond";
-var searchResult = `<iframe width="95%" height="200" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=${placeSearch}&key=AIzaSyBac2HUKDso4kbbD1NbvLWvtfeWvpdVuWA" allowfullscreen></iframe>`
+// var placeSearch = "richmond";
+// var searchResult = `<iframe width="95%" height="200" frameborder="0" style="border:0"
+// src="https://www.google.com/maps/embed/v1/place?q=${placeSearch}&key=AIzaSyBac2HUKDso4kbbD1NbvLWvtfeWvpdVuWA" allowfullscreen></iframe>`
 
 
 function appendMap() {
