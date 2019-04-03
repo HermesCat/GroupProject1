@@ -18,7 +18,6 @@ footer {
 
   .stickyFooter {
     position: absolute;
-    bottom:0;
     left: 0;
     width: 100%;
     background-color: #c5cad1;
@@ -109,6 +108,7 @@ h1 .highlighter {
 
  #aboutJumbotron {
      padding-top: 0;
+     min-height: 400px;
  }
 /*----------------- button formating ---------------------------------------------------------------------  */
   button {
