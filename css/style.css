@@ -16,6 +16,15 @@ footer {
     text-align: center;
   }
 
+  .stickyFooter {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    background-color: #c5cad1;
+    color: white;
+    text-align: center;
+  }
 
 
 .container-fluid {
@@ -83,7 +92,24 @@ h1 .highlighter {
     text-align: center;
 }
 
+.imgHeaderText {
+    font-size: 22px;
+    font-family: 'Rubik', sans-serif;
+    color: white;
 
+ }
+ .imgHeaderText p {
+    background: red;
+    background: .6;
+    border-radius: 8px;
+    border: 1px solid red;
+
+
+ }
+
+ #aboutJumbotron {
+     padding-top: 0;
+ }
 /*----------------- button formating ---------------------------------------------------------------------  */
   button {
     display: inline-block;
@@ -115,4 +141,5 @@ button:active {
 
 .hot{
     background: red;
+    color: #ffffff;
 }
