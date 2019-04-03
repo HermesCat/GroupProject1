@@ -10,16 +10,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <!-- jQuery CDN -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- jQuery -->
   <link rel="reset" href="css/reset.css">
-  <!-- google font -->
-  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
-  <!-- google font -->
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet"> <!-- google font -->
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"> <!-- google font -->
   <link rel="stylesheet" href="css/style.css">
   <!-- Firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script src ="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 
 </head>
 
@@ -44,90 +43,76 @@
                 <a class="nav-link" href="#">ABOUT</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">CONTACT</a>
+                <a class="nav-link" href="#">CONTACT</a>
               </li>
             </ul>
             <!----- login/sign up buttons ---------------------------------------------------------------------------------->
             <div class="row">
               <div class="col-md-12" id="buttonList">
-                  <!-- Button trigger modal -->
-                  <div id="welcome">
-                      <button type="button" data-toggle="modal" data-target="#loginModal" style="display:show"
-                          id="loginButton">
-                          Login
-                      </button>
+                <!-- Button trigger modal -->
+                <button type="button" data-toggle="modal" data-target="#loginModal">
+                  Login
+                </button>
 
-                      <!-- Modal -->
-                      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                          aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
-                          <div class="modal-dialog modal-lg">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate
-                                      </h1>
-                                  </div>
-                                  <div class="modal-body">
-                                      <h3>User Login</h3>
-                                      <label for="searchTerm">Email Adress</label>
-                                      <input type="text" class="form-control" id="emailInputLogin"
-                                          placeholder="ex. jsmith@example.com">
-                                      <label for="searchTerm">Password</label>
-                                      <input type="password" class="form-control" id="passwordLogin">
-
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="hot" data-toggle="modal"
-                                          data-target="#loginModal" id="login">Login</button>
-                                      <button class="button cancel" data-dismiss="modal">Cancel</button>
-                                  </div>
-                              </div>
-                          </div>
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate</h1>
                       </div>
+                      <div class="modal-body">
+                        <h3>User Login</h3>
+                        <label for="searchTerm">Email Adress</label>
+                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
+                        <label for="searchTerm">Password</label>
+                        <input type="password" class="form-control" id="Password1">
 
-                      <!-- button 2 -->
-                      <!-- Button trigger modal -->
-                      <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal"
-                          style="display:show" id="signUpButton">
-                          Sign-Up
-                      </button>
-
-                      <!-- Modal -->
-                      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                          aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
-                          <div class="modal-dialog modal-lg">
-                              <div class="modal-content">
-                                  <div class="modal-header">
-                                      <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate
-                                      </h1>
-                                  </div>
-                                  <div class="modal-body">
-                                      <h3>Sign-Up</h3>
-                                      <!-- <label for="searchTerm">Name</label>
-                                      <input type="text" class="form-control" id="userName"
-                                          placeholder="Jane Doe"> -->
-                                      <label for="searchTerm">Email Adress</label>
-                                      <input type="text" class="form-control" id="emailInput"
-                                          placeholder="ex. jsmith@example.com">
-                                      <label for="searchTerm">Password</label>
-                                      <input type="password" class="form-control" id="password1">
-                                  </div>
-                                  <div class="modal-footer">
-                                      <button type="button" class="hot" data-toggle="modal"
-                                          data-target="#signUpModal" id="register">Register</button>
-                                      <button class="button cancel" data-dismiss="modal">Cancel</button>
-                                  </div>
-                              </div>
-                          </div>
                       </div>
-                      <button type="button" id="logOff" style="display:none">Log Off</button>
+                      <div class="modal-footer">
+                        <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">Login</button>
+                        <button class="button" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
                   </div>
+                </div>
+
+                <!-- button 2 -->
+                <!-- Button trigger modal -->
+                <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">
+                  Sign-Up
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate</h1>
+                      </div>
+                      <div class="modal-body">
+                        <h3>Sign-Up</h3>
+                        <label for="searchTerm">Email Adress</label>
+                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
+                        <label for="searchTerm">Password</label>
+                        <input type="password" class="form-control" id="Password1">
+                        <label for="searchTerm">Re-Type Password</label>
+                        <input type="password" class="form-control" id="Password2">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="hot" data-toggle="modal"
+                          data-target="#signUpModal" id="register">Register</button>
+                        <button class="button" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-          </div>
-            <!-- end of Modals -->
+            </div>
           </div>
         </div>
-      </div>
-
     </header>
 
 
@@ -242,31 +227,27 @@
                   <!-- this is the end of the thrd article -->
                 </div>
               </div>
+
+
+
+
+
             </div>
           </div>
+
         </div>
       </div>
-            <!-- end of container -->
+
+
+
+
+
+
+
+
+
+      <!-- end of container -->
     </div>
-<<<<<<< HEAD
-  </div>
-
-  <footer>
-    <h4>My News Aggragate &copy;</h4>
-  </footer>
-  <!-- Out javascript file -->
-
-  <script src="javacript/app.js"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-=======
 
     <footer>
       <h4>My News Aggragate &copy;</h4>
@@ -274,16 +255,14 @@
     <!-- Out javascript file -->
 
     <script src="javacript/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
       crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
->>>>>>> 804bb0a8a0cba376c7eb3d7b865198c7b4014bf4
+      <script>moment().format();</script>
 
 </body>
 
