@@ -33,7 +33,7 @@ $.ajax({
 // API CALL WITH USER INPUT
 //  var queryURL = "https://newsapi.org/v2/everything?q=+richmond+virginia" + userSearch + "&from=2019-03-00&sortBy=relevancy&apiKey=f14386004b984aab9c45f6dcf17b377f";
 // console.log(queryURL);
-$(".btn").on("click", function() {
+/* $(".btn").on("click", function() {
     event.preventDefault();
   // STORE USER INPUT
     var userSearch = $(".form-control").val().trim();
@@ -54,7 +54,7 @@ $(".btn").on("click", function() {
     };
     $("#search").val("");
   }); 
-  }); 
+  }); */
 
   // TOP BUTTON API CALL: WORKING AS OF 04/02/2019
   $("#topArticle").on("click", function(event) {
@@ -120,18 +120,21 @@ $("body").on("click", "button", function(event) {
 console.log(userSearch);
 var userLocation = $("#location").val().trim();
 console.log(userLocation);
-var comboFilters = `"${userSearch}and${userLocation}"`;
+//var comboFilters = `"${userSearch}and${userLocation}"`;
+var comboFilters = `${userSearch}`;
 console.log(comboFilters);
 $(".form-control").val("");
 
 // API CALL
-var userStories = `"https://newsapi.org/v2/everything?q=${comboFilters}&apiKey=f14386004b984aab9c45f6dcf17b377f"`;
+ var userStories = `https://newsapi.org/v2/everything?q=${comboFilters}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
+
 console.log(userStories);
 
 $.ajax({
   url: userStories,
   method: "GET",
 }).then(function(search) {
+  for (i = 0; i < 10; i++) {
   $("#articleAppendBox").append(`
   <div class="media">
   <img src="${search.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
@@ -142,6 +145,7 @@ $.ajax({
 </div>
 <hr>
   `);
+  }
   console.log(search);
 });
 
