@@ -1,3 +1,6 @@
+$(document).ready();
+
+// Initialize Firebase
 var config = {
     apiKey: "AIzaSyDf9lm-48TNjjiyNxZWLuQsPm2m7qHIkHw",
     authDomain: "gproject-5eab9.firebaseapp.com",
@@ -10,34 +13,73 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+var user = null;
 
-
+firebase.auth().onAuthStateChanged(function (currentUser) {
+    if (currentUser) {
+        user = {
+            email: currentUser.email,
+            id: currentUser.uid,
+            displayName: currentUser.displayName
+        }
+        return;
+    }
+    user = null;
+});
 
 $("#register").on("click", function (event) {
     event.preventDefault();
 
-    // Grabs the input fields, not working at the moment, except for retypePassword
-    var email = $("#emailInput").val().trim();
-    var password = $("#Password1").val().trim();
-    var retypePassword = $("#Password2").val().trim();
-    console.log(email);
-    console.log(password)
-    console.log(retypePassword);
+    var email = $("#signUpModal #emailInput").val().trim();
+    var password = $("#signUpModal #password1").val().trim();
+    // var name = $("#signUpModal #userName").val().trim();
 
-    // Set for local storage
-    var newUser = {
-        email: email,
-        password: password
-    }    
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(function (newUser) {
+        return newUser.updateProfile({
+            // displayName: name
+        });
+    })
+        .then(function (user) {
+            console.log(user);
+            // we should update global user here
+        }).catch(function () {
+            // Handle Errors here.
 
-    // validates that the passwords match upon registration
-    if (Password1 === Password2){
-        database.ref().push(newUser);
-    } else {
-        alert("Those Passwords do not match, try again.")
-    }
-})
+            // ...
+        });
+});
 
+$("#login").on("click", function (e) {
+    e.preventDefault();
+
+    var email = $("#loginModal #emailInputLogin").val().trim();
+    var password = $("#loginModal #passwordLogin").val().trim();
+
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function (response) {
+        console.log(response);
+    }).catch(function (error) {
+        // Handle Errors here.
+
+        // ...
+    });
+    // Show Hide
+    // $("#welcome").append(`Welcome ${email}`);
+    $("#logOff").show();
+    $("#loginButton").hide();
+    $("#signUpButton").hide();
+});
+
+$("#logOff").on("click", function () {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
+        // An error happened.
+    });
+    // Show Hide    
+    $("#logOff").hide()
+    $("#loginButton").show()
+    $("#signUpButton").show()
+    
+});
 
 // API KEY
 // var queryURL = "https://newsapi.org/v2/top-headlines?sources=richmondtimesdispatch&apiKey=f14386004b984aab9c45f6dcf17b377f";
@@ -87,43 +129,43 @@ appendMap();
 // API CALL WITH USER INPUT
 //  var queryURL = "https://newsapi.org/v2/everything?q=+richmond+virginia" + userSearch + "&from=2019-03-00&sortBy=relevancy&apiKey=f14386004b984aab9c45f6dcf17b377f";
 // console.log(queryURL);
-$(".btn").on("click", function() {
+$(".btn").on("click", function () {
     event.preventDefault();
-  // STORE USER INPUT
+    // STORE USER INPUT
     var userSearch = $(".form-control").val().trim();
     var queryURL = "https://newsapi.org/v2/everything?q=+richmond+virginia+" + userSearch + "&from=2019-03-00&sortBy=relevancy&apiKey=f14386004b984aab9c45f6dcf17b377f";
-   // var recentURL = "https://newsapi.org/v2/everything?q=" "&from=2019-03-00&sortBy=relevancy&apiKey=f14386004b984aab9c45f6dcf17b377f";
+    // var recentURL = "https://newsapi.org/v2/everything?q=" "&from=2019-03-00&sortBy=relevancy&apiKey=f14386004b984aab9c45f6dcf17b377f";
     console.log(userSearch);
-  // API CALL
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response);
-    for (i = 0; i < 10; i++) {
-    $(".lead").append(` <h3> ${response.articles[i].title} </h3> `);
-    $(".lead").append(` <p> ${response.articles[i].content} </p> `);
-    $(".lead").append(` <a href="${response.articles[i].url}" LINK </a> `);
-    $(".lead").append(` <img src="${response.articles[i].urlToImage}"> `);
-    };
-    $("#search").val("");
-  }); 
-  }); 
-  // TOP BUTTON API CALL
-  $(".btn").on("click", function() {
+    // API CALL
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response);
+        for (i = 0; i < 10; i++) {
+            $(".lead").append(` <h3> ${response.articles[i].title} </h3> `);
+            $(".lead").append(` <p> ${response.articles[i].content} </p> `);
+            $(".lead").append(` <a href="${response.articles[i].url}" LINK </a> `);
+            $(".lead").append(` <img src="${response.articles[i].urlToImage}"> `);
+        };
+        $("#search").val("");
+    });
+});
+// TOP BUTTON API CALL
+$(".btn").on("click", function () {
     event.preventDefault();
     var topURL = "https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey=f14386004b984aab9c45f6dcf17b377f";
     $.ajax({
-      url: topURL,
-      method: "GET"
-    }).then(function(response) {
-      $(".lead").append(` <h3> ${response.articles[0].title} </h3> `);
-      $(".lead").append(` <p> ${response.articles[0].content} </p> `);
-      $(".lead").append( ` <a href="${response.articles[0].url}"> LINK </a> `);  
-      $(".lead").append(` <img src="${response.articles[0].urlToImage}"> `);
-      console.log(response);
+        url: topURL,
+        method: "GET"
+    }).then(function (response) {
+        $(".lead").append(` <h3> ${response.articles[0].title} </h3> `);
+        $(".lead").append(` <p> ${response.articles[0].content} </p> `);
+        $(".lead").append(` <a href="${response.articles[0].url}"> LINK </a> `);
+        $(".lead").append(` <img src="${response.articles[0].urlToImage}"> `);
+        console.log(response);
     });
-  });
+});
   // var req = new Request(queryURL);
   // fetch(req).then(function(response) {
   //         console.log(response.json());
