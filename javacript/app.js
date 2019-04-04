@@ -1,4 +1,3 @@
-// NEWS API KEY
 $(document).ready();
 
 // Initialize Firebase
@@ -21,7 +20,7 @@ firebase.auth().onAuthStateChanged(function (currentUser) {
         user = {
             email: currentUser.email,
             id: currentUser.uid,
-            displayName: currentUser.displayName
+            // displayName: currentUser.displayName
         }
         return;
     }
@@ -65,9 +64,7 @@ $("#login").on("click", function (e) {
     });
     // Show Hide
     // $("#welcome").append(`Welcome ${email}`);
-    $("#logOff").show();
-    $("#loginButton").hide();
-    $("#signUpButton").hide();
+    logIn()
 });
 
 $("#logOff").on("click", function () {
@@ -76,11 +73,35 @@ $("#logOff").on("click", function () {
         // An error happened.
     });
     // Show Hide    
+    logOff()
+
+});
+
+function logIn () {
+    $("#logOff").show();
+    $("#loginButton").hide();
+    $("#signUpButton").hide();
+}
+
+function logOff () {
     $("#logOff").hide()
     $("#loginButton").show()
     $("#signUpButton").show()
-    
-});
+}
+
+function userCheck() {
+    if (user === true) {
+        $("#logOff").hide()
+        $("#loginButton").show()
+        $("#signUpButton").show()
+    } else {
+        $("#logOff").show();
+        $("#loginButton").hide();
+        $("#signUpButton").hide();
+    }
+}
+
+// ---------------- William Wood ------------------
 
   // TOP BUTTON API CALL: WORKING AS OF 04/02/2019
   $("#topArticle").on("click", function(event) {
@@ -176,7 +197,9 @@ $.ajax({
   console.log(search);
 }); 
 
-}); 
+});
+       
+ 
 
 // API CALLS FOR PRE-MADE BUTTONS
 $("#businessBtn").on("click", function(event) {
