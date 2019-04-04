@@ -1,4 +1,3 @@
-// NEWS API KEY
 $(document).ready();
 
 // Initialize Firebase
@@ -21,7 +20,7 @@ firebase.auth().onAuthStateChanged(function (currentUser) {
         user = {
             email: currentUser.email,
             id: currentUser.uid,
-            displayName: currentUser.displayName
+            // displayName: currentUser.displayName
         }
         return;
     }
@@ -65,9 +64,7 @@ $("#login").on("click", function (e) {
     });
     // Show Hide
     // $("#welcome").append(`Welcome ${email}`);
-    $("#logOff").show();
-    $("#loginButton").hide();
-    $("#signUpButton").hide();
+    logIn()
 });
 
 $("#logOff").on("click", function () {
@@ -76,11 +73,35 @@ $("#logOff").on("click", function () {
         // An error happened.
     });
     // Show Hide    
+    logOff()
+
+});
+
+function logIn () {
+    $("#logOff").show();
+    $("#loginButton").hide();
+    $("#signUpButton").hide();
+}
+
+function logOff () {
     $("#logOff").hide()
     $("#loginButton").show()
     $("#signUpButton").show()
-    
-});
+}
+
+function userCheck() {
+    if (user === true) {
+        $("#logOff").hide()
+        $("#loginButton").show()
+        $("#signUpButton").show()
+    } else {
+        $("#logOff").show();
+        $("#loginButton").hide();
+        $("#signUpButton").hide();
+    }
+}
+
+// ---------------- William Wood ------------------
 
   // TOP BUTTON API CALL: WORKING AS OF 04/02/2019
   $("#topArticle").on("click", function(event) {
@@ -193,14 +214,5 @@ $.ajax({
 });
 
 });
-        url: topURL,
-        method: "GET"
-    }).then(function (response) {
-        $(".lead").append(` <h3> ${response.articles[0].title} </h3> `);
-        $(".lead").append(` <p> ${response.articles[0].content} </p> `);
-        $(".lead").append(` <a href="${response.articles[0].url}"> LINK </a> `);
-        $(".lead").append(` <img src="${response.articles[0].urlToImage}"> `);
-        console.log(response);
-    });
-});
+       
 
