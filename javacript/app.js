@@ -84,23 +84,6 @@ $("#logOff").on("click", function () {
 
   // TOP BUTTON API CALL: WORKING AS OF 04/02/2019
   $("#topArticle").on("click", function(event) {
-    // API CALL
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        console.log(response);
-        for (i = 0; i < 10; i++) {
-            $(".lead").append(` <h3> ${response.articles[i].title} </h3> `);
-            $(".lead").append(` <p> ${response.articles[i].content} </p> `);
-            $(".lead").append(` <a href="${response.articles[i].url}" LINK </a> `);
-            $(".lead").append(` <img src="${response.articles[i].urlToImage}"> `);
-        };
-        $("#search").val("");
-    });
-});
-// TOP BUTTON API CALL
-$(".btn").on("click", function () {
     event.preventDefault();
     var topStories = "https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=f14386004b984aab9c45f6dcf17b377f";
     $.ajax({
@@ -114,6 +97,7 @@ $(".btn").on("click", function () {
         <div class="media-body">
           <h5 class=mt-0"> ${response.articles[i].title} </h5>
           <p> ${response.articles[i].content} </p>
+          <a href="${response.articles[i].url}"> ${response.articles[i].title} </a>
         </div>
       </div>
       <hr>
@@ -150,7 +134,7 @@ $(".btn").on("click", function () {
   }); 
 
   // DYNAMIC BUTTON API CALLS
-$("body").on("click", "button", function(event) { 
+ $("body").on("click", "button", function(event) { 
   event.preventDefault();
 
 // DYNAMIC BUTTON CREATION
@@ -166,11 +150,10 @@ console.log(userLocation);
 //var comboFilters = `"${userSearch}and${userLocation}"`;
 var comboFilters = `${userSearch}`;
 console.log(comboFilters);
-$(".form-control").val("");
+$(".form-control").val(""); 
 
 // API CALL
  var userStories = `https://newsapi.org/v2/everything?q=${comboFilters}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
-
 console.log(userStories);
 
 $.ajax({
@@ -184,23 +167,62 @@ $.ajax({
   <div class="media-body">
     <h5 class=mt-0"> ${search.articles[i].title} </h5>
     <p> ${search.articles[i].description} </p>
+    <a href="${search.articles[i].url}"> ${search.articles[i].title} </a>
   </div>
 </div>
 <hr>
   `);
   }
   console.log(search);
-});
+}); 
 
-});
-        url: topURL,
-        method: "GET"
-    }).then(function (response) {
-        $(".lead").append(` <h3> ${response.articles[0].title} </h3> `);
-        $(".lead").append(` <p> ${response.articles[0].content} </p> `);
-        $(".lead").append(` <a href="${response.articles[0].url}"> LINK </a> `);
-        $(".lead").append(` <img src="${response.articles[0].urlToImage}"> `);
-        console.log(response);
+}); 
+
+// API CALLS FOR PRE-MADE BUTTONS
+$("#businessBtn").on("click", function(event) {
+  event.preventDefault();
+  var politicsURL = "https://newsapi.org/v2/everything?q=business&sortBy=popularity&apiKey=f14386004b984aab9c45f6dcf17b377f";
+  $.ajax({
+    url: politicsURL,
+    method: "GET",
+  }).then(function(business) {
+      for (i= 0; i < 10; i++) {
+        $("#articleAppendBox").append(`
+        <div class="media">
+        <img src="${business.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
+        <div class="media-body">
+          <h5 class=mt-0"> ${business.articles[i].title} </h5>
+          <p> ${business.articles[i].description} </p>
+          <a href="${business.articles[i].url}"> ${business.articles[i].title} </a>
+        </div>
+      </div>
+      <hr>
+        `);
+      }
     });
-});
+    });
+
+    $("#scienceBtn").on("click", function(event) {
+      event.preventDefault();
+      var scienceURL = "https://newsapi.org/v2/everything?q=science&sortBy=popularity&apiKey=f14386004b984aab9c45f6dcf17b377f";
+      $.ajax({
+        url: scienceURL,
+        method: "GET",
+      }).then(function(science) {
+          for (i= 0; i < 10; i++) {
+            $("#articleAppendBox").append(`
+            <div class="media">
+            <img src="${science.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
+            <div class="media-body">
+              <h5 class=mt-0"> ${science.articles[i].title} </h5>
+              <p> ${science.articles[i].description} </p>
+              <a href="${science.articles[i].url}"> ${science.articles[i].title} </a>
+            </div>
+          </div>
+          <hr>
+            `);
+          }
+        });
+        });
+
 
