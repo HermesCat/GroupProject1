@@ -127,17 +127,16 @@
               <h1 class="display-6">My Searches</h1>
               <p class="lead">These are your saved searches.</p>
               <div class="card" id="buttonCard">
-                <h3>Your Keywods</h3>
+                <h3>Your Keywords</h3>
                 <!-- The User Search Buttons will go here -->
                 <ul class="userButton">
-                  <button id="businessBtn">Business</button>
+                  <!-- <button id="businessBtn">Business</button>
                   <button id="scienceBtn">News in Science</button>
                   <button>Penguins</button>
                   <button>Florida</button>
-                  <button>Fans</button>
+                  <button>Fans</button> -->
                 </ul>
               </div>
-
               <!-- This is the search result Column -->
               <div class="card-mb-4">
                 <div class="card-body">
@@ -148,12 +147,11 @@
                         <input type="text" class="form-control" id="searchTerm" placeholder="ex. Restaurants">
                         <label for="searchTerm">Location</label>
                         <input type="text" class="form-control" id="location" placeholder="ex. San Francisco">
-
                       </div>
                       <div class="row">
-                        <div class="col-md-4"> <button id= "masterSearch">Search</button> </div>
-                        <div class="col-md-8"><input type="checkbox" class="form-check-input" id="rememberMe">
-                          <label class="form-check-label" for="Remember" id="rememberText">Remember Me</label></div>
+                        <div class="col-md-4"> <button id="masterSearch">Search</button> </div>
+                        <div class="col-md-8"><input type="checkbox" class="form-check-input" id="storeKeywords">
+                          <label class="form-check-label" for="Remember" id="rememberME">Store Keywords</label></div>
                       </div>
                     </form>
 
@@ -165,14 +163,13 @@
           </div>
         </div>
         <!--- results side ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
-        <div class="col-8 order-1 order-md-12">
+        <div class="col-8 ">
           <div class="card">
             <div class="card-body">
               <h1 class="display-6">Search Results</h1>
             </div>
             <!-- Google map will be appended here. --------------------->
             <div class="" id="map">
-
             </div>
             <!-- Top and most recent article buttons -->
             <div class="col-md-12 order-1 order-md-12" id="articleButtons">
@@ -181,7 +178,6 @@
               <!-- Articles and links will be posted here. Its a media box nested withing a card body-->
               <div class="card">
                 <div class="card-body" id="articleAppendBox">
-
                   <!-- we will append something like this with jQuery -->
                   <div class="media">
                     <img
@@ -236,32 +232,25 @@
 
         </div>
       </div>
-
-
-
-
-
-
-
-
-
       <!-- end of container -->
     </div>
-
     <footer>
       <h4>My News Aggragate &copy;</h4>
     </footer>
-    <!-- Out javascript file -->
+  <!-- Out javascript file -->
 
-    <script src="javacript/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
-      <script>moment().format();</script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+  <script src="javacript/app.js"></script>
+  <script>moment().format();</script>
 
 </body>
 
