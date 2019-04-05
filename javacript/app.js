@@ -20,7 +20,6 @@ firebase.auth().onAuthStateChanged(function (currentUser) {
     user = {
       email: currentUser.email,
       id: currentUser.uid,
-      // displayName: currentUser.displayName
     }
     return;
   }
@@ -32,11 +31,11 @@ $("#register").on("click", function (event) {
 
   var email = $("#signUpModal #emailInput").val().trim();
   var password = $("#signUpModal #password1").val().trim();
-  // var name = $("#signUpModal #userName").val().trim();
 
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function (newUser) {
+    logIn()
     return newUser.updateProfile({
-      // displayName: name
+
     });
   })
     .then(function (user) {
@@ -57,23 +56,25 @@ $("#login").on("click", function (e) {
 
   firebase.auth().signInWithEmailAndPassword(email, password).then(function (response) {
     console.log(response);
+    logIn()
   }).catch(function (error) {
     // Handle Errors here.
 
     // ...
   });
   // Show Hide
-  // $("#welcome").append(`Welcome ${email}`);
-  logIn()
+  // $("#welcome").append(`Welcome ${email}`);  Need more work here!!!!
+
 });
 
 $("#logOff").on("click", function () {
   firebase.auth().signOut().then(function () {
+    logOff()
   }).catch(function (error) {
     // An error happened.
   });
   // Show Hide    
-  logOff()
+
 
 });
 
@@ -84,9 +85,10 @@ function logIn() {
 }
 
 function logOff() {
-  $("#logOff").hide()
-  $("#loginButton").show()
-  $("#signUpButton").show()
+  $("#logOff").hide();
+  $("#loginButton").show();
+  $("#signUpButton").show();
+  $(".userButton").empty("");
 }
 
 function userCheck() {
@@ -109,7 +111,7 @@ var userKeywords = [];
 
 // THIS IS THE SEARCH CLICK EVENT
 $("#masterSearch").on("click", function (search) {
-  search.preventDefault();  
+  search.preventDefault();
 
   if ($("#storeKeywords").is(":checked") === true) {
     var newButton = $("#searchTerm").val().trim();
@@ -117,7 +119,7 @@ $("#masterSearch").on("click", function (search) {
     renderButton();
     displayArticles($("#searchTerm").val().trim());
     $("#searchTerm").val("");
-
+    storedData();
   } else {
     displayArticles($("#searchTerm").val().trim());
     $("searchTerm").val("");
@@ -167,9 +169,16 @@ function displayArticles(event) {
   </div>
   <hr>
     `);
-    }
-  })
-
+    };
+  });
 };
+
+function storedData() {
+  
+  var dataUp = {
+    search: userKeywords,
+  }
+  database.ref().push(dataUp);
+}
 
 // $(".userButton").on("click", ".articles", displayArticles);
