@@ -119,13 +119,8 @@ $("#masterSearch").on("click", function (search) {
     $("#searchTerm").val("");
 
   } else {
-<<<<<<< HEAD
-    $(".form-control").val("");
-    displayArticles();
-=======
     displayArticles($("#searchTerm").val().trim());
     $("searchTerm").val("");
->>>>>>> 0cb918768fc6c170d65585d27d088dc589f40b84
   }
 });
 // CREATES BUTTONS BASED UPON THE ARRAY
@@ -177,8 +172,4 @@ function displayArticles(event) {
 
 };
 
-<<<<<<< HEAD
-$(".userButton").on("click", ".articles", displayArticles);
-=======
 // $(".userButton").on("click", ".articles", displayArticles);
->>>>>>> 0cb918768fc6c170d65585d27d088dc589f40b84

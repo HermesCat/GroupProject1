@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="css/style.css">
   <!-- Firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
-  <script src ="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 
 </head>
@@ -27,13 +27,13 @@
     <header>
       <!-- Main title -->
       <div class="row">
-        <div class="col-md-6 col-xs-12">
+        <div class="col-6">
           <h1 id="mainTitle">
-            <span class="highlighter">Quick</span>Aggregate
+            <span class="highlighter">My</span>News Aggregate
           </h1>
         </div>
         <!-- navs -->
-        <div class="col-md-6 col-xs-12">
+        <div class="col-6">
           <div class="navItems">
             <ul class="nav">
               <li class="nav-item">
@@ -50,69 +50,80 @@
             <div class="row">
               <div class="col-md-12" id="buttonList">
                 <!-- Button trigger modal -->
-                <button type="button" data-toggle="modal" data-target="#loginModal">
-                  Login
-                </button>
+                <div id="welcome">
+                  <button type="button" data-toggle="modal" data-target="#loginModal" style="display:show"
+                    id="loginButton">
+                    Login
+                  </button>
 
-                <!-- Modal -->
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate</h1>
-                      </div>
-                      <div class="modal-body">
-                        <h3>User Login</h3>
-                        <label for="searchTerm">Email Adress</label>
-                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
-                        <label for="searchTerm">Password</label>
-                        <input type="password" class="form-control" id="Password1">
+                  <!-- Modal -->
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate
+                          </h1>
+                        </div>
+                        <div class="modal-body">
+                          <h3>User Login</h3>
+                          <label for="searchTerm">Email Adress</label>
+                          <input type="text" class="form-control" id="emailInputLogin"
+                            placeholder="ex. jsmith@example.com">
+                          <label for="searchTerm">Password</label>
+                          <input type="password" class="form-control" id="passwordLogin">
 
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">Login</button>
-                        <button class="button" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="hot" data-toggle="modal" data-target="#loginModal"
+                            id="login">Login</button>
+                          <button class="button cancel" data-dismiss="modal">Cancel</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- button 2 -->
-                <!-- Button trigger modal -->
-                <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">
-                  Sign-Up
-                </button>
+                  <!-- button 2 -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal" style="display:show"
+                    id="signUpButton">
+                    Sign-Up
+                  </button>
 
-                <!-- Modal -->
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate</h1>
-                      </div>
-                      <div class="modal-body">
-                        <h3>Sign-Up</h3>
-                        <label for="searchTerm">Email Adress</label>
-                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
-                        <label for="searchTerm">Password</label>
-                        <input type="password" class="form-control" id="Password1">
-                        <label for="searchTerm">Re-Type Password</label>
-                        <input type="password" class="form-control" id="Password2">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="hot" data-toggle="modal"
-                          data-target="#signUpModal" id="register">Register</button>
-                        <button class="button" data-dismiss="modal">Cancel</button>
+                  <!-- Modal -->
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 id="mainTitle"><span class="highlighter">My</span>News Aggregate
+                          </h1>
+                        </div>
+                        <div class="modal-body">
+                          <h3>Sign-Up</h3>
+                          <!-- <label for="searchTerm">Name</label>
+                                              <input type="text" class="form-control" id="userName"
+                                                  placeholder="Jane Doe"> -->
+                          <label for="searchTerm">Email Adress</label>
+                          <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
+                          <label for="searchTerm">Password</label>
+                          <input type="password" class="form-control" id="password1">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal"
+                            id="register">Register</button>
+                          <button class="button cancel" data-dismiss="modal">Cancel</button>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <button type="button" id="logOff" style="display:none">Log Off</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </header>
 
 
@@ -121,7 +132,7 @@
       <!-- This row will separate the two main elements of the page SEARCH/RESULTS -->
       <div class="row">
         <!---------- Search side ------------------------------------------------------------------------------------------------------------------------------------------------------------>
-        <div class="col-md-4 col-xs-12">
+        <div class="col-4 col-xs-12">
           <div class="card">
             <div class="card-body">
               <h1 class="display-6">My Searches</h1>
@@ -154,7 +165,6 @@
                           <label class="form-check-label" for="Remember" id="rememberME">Store Keywords</label></div>
                       </div>
                     </form>
-
                   </div>
                 </div>
               </div>
@@ -163,7 +173,8 @@
           </div>
         </div>
         <!--- results side ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
-        <div class="col-8 col-xs-12" id="resultSide">
+        <div class="row .d-block .d-sm-none">
+        <div class="col-8">
           <div class="card">
             <div class="card-body">
               <h1 class="display-6">Search Results</h1>
@@ -173,8 +184,8 @@
             </div>
             <!-- Top and most recent article buttons -->
             <div class="col-md-12" id="articleButtons">
-              <button id="topArticle" >Top Articles</button>
-              <button id="mostRecent" >Most Recent</button>
+              <button id="topArticle">Top Articles</button>
+              <button id="mostRecent">Most Recent</button>
               <!-- Articles and links will be posted here. Its a media box nested withing a card body-->
               <div class="card">
                 <div class="card-body" id="articleAppendBox">
@@ -222,16 +233,11 @@
                   <!-- this is the end of the thrd article -->
                 </div>
               </div>
-
-
-
-
-
             </div>
           </div>
-
         </div>
       </div>
+    </div>
       <!-- end of container -->
     </div>
     <footer>
