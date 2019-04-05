@@ -143,3 +143,33 @@ button:active {
     background: red;
     color: #ffffff;
 }
+
+/*  media queries */
+
+
+@media (max-width: 599px) { @content; } 
+    #mainTitle {
+        display: inline-block;
+        font-family: 'Rubik', sans-serif;
+        font-weight: bolder;
+        letter-spacing: -1px;
+        text-align: center;
+    }
+nav {
+    text-align: center;
+}
+#buttonList {
+    margin: 0 auto;
+    float: none;
+    left: 40px;
+}
+.container-fluid {
+    width: 100%;
+}
+ 
+
+#resultSide .card-body{
+    width: 100%;
+
+}
+
