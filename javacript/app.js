@@ -109,17 +109,18 @@ var userKeywords = [];
 
 // THIS IS THE SEARCH CLICK EVENT
 $("#masterSearch").on("click", function (search) {
-  search.preventDefault();
+  search.preventDefault();  
 
   if ($("#storeKeywords").is(":checked") === true) {
     var newButton = $("#searchTerm").val().trim();
     userKeywords.push(newButton);
     renderButton();
-    $(".form-control").val("");
-    displayArticles();
+    displayArticles($("#searchTerm").val().trim());
+    $("#searchTerm").val("");
+
   } else {
-    displayArticles();
-    $(".form-control").val("");
+    displayArticles($("#searchTerm").val().trim());
+    $("searchTerm").val("");
   }
 });
 // CREATES BUTTONS BASED UPON THE ARRAY
@@ -131,17 +132,25 @@ function renderButton() {
     b.addClass("articles")
     b.attr("data-button", userKeywords[i])
     b.text(userKeywords[i])
+    b.on("click", displayArticles);
     $(".userButton").append(b);
   }
 }
 // API CALL FOR NEWS ARTICLES BASED UPON INPUT FIELD VALUE
-function displayArticles() {
+function displayArticles(event) {
   $("#articleAppendBox").empty();
-  var articles = $(this).attr("data-button");
-  console.log(articles);
-  var userSearch = $(".form-control").val().trim();
-  var userStories = `https://newsapi.org/v2/everything?q=${articles}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
+  var articles;
+  if (typeof event === "string") {
+    articles = event;
+  } else {
+    articles = $(this).attr("data-button");
+  }
 
+  console.log(articles);
+  var userSearch = $("#searchTerm").val().trim();
+  var userStories = `https://newsapi.org/v2/everything?q=${articles}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
+  var searchStories = `https://newsapi.org/v2/everything?q=${userSearch}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
+  console.log(userStories);
   $.ajax({
     url: userStories,
     method: "GET",
@@ -160,5 +169,7 @@ function displayArticles() {
     `);
     }
   })
+
 };
 
+// $(".userButton").on("click", ".articles", displayArticles);
