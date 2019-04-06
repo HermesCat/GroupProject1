@@ -59,7 +59,7 @@ h1 .highlighter {
 }
 
 .nav-link {
-    decoration: none;
+    text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     color: red;
@@ -145,12 +145,12 @@ button:active {
 }
 
 
-a:link {
+.things:link {
     text-decoration: none;
     color: black;
 }
 
-a:visited {
+.things:visited {
     text-decoration: none;
     color: black;
 }

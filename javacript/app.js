@@ -150,15 +150,17 @@ function displayArticles(event) {
   }).then(function (search) {
     for (i = 0; i < 10; i++) {
       $("#articleAppendBox").append(`
+    <a class="things" href="${search.articles[i].url}" target = "_blank">
     <div class="media">
     <img src="${search.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
     <div class="media-body">
       <h5 class=mt-0"> ${search.articles[i].title} </h5>
       <p> ${search.articles[i].description} </p>
-      <a href="${search.articles[i].url}" target = "_blank"> ${search.articles[i].title} </a>
+      <a class="things" href="${search.articles[i].url}" target = "_blank"> ${search.articles[i].title} 
     </div>
   </div>
   <hr>
+  </a>
     `);
     };
   });
@@ -174,7 +176,7 @@ $("#topArticle").on("click", function (event) {
     $("#articleAppendBox").empty();
     for (i = 0; i < 5; i++) {
       $("#articleAppendBox").append(` 
-      <a href="${response.articles[i].url}">
+      <a class="things" href="${response.articles[i].url}" target = "_blank">
      <div class="media">
       <img src="${response.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
       <div class="media-body">
@@ -201,13 +203,15 @@ $("#mostRecent").on("click", function (event) {
     $("#articleAppendBox").empty();
     for (i = 0; i < 20; i++) {
       $("#articleAppendBox").append(`
+      <a class="things" href="${response.articles[i].url}" target = "_blank">
       <div class="media">
       <img src="${response.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="Broken">
       <div class="media-body">
-        <h5 class=mt-0"> <a href="${response.articles[i].url}"> ${response.articles[i].title} </a> </h5>
+        <h5 class=mt-0">  ${response.articles[i].title}  </h5>
         <p> ${response.articles[i].description} </p>
       </div>
     </div>
+    </a>
     <hr>
       `)
     };
