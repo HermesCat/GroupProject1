@@ -221,5 +221,4 @@ function storedData() {
   }
   database.ref().push(dataUp);
 };
-
 // $(".userButton").on("click", ".articles", displayArticles);
