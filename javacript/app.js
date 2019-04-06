@@ -174,30 +174,32 @@ $("#topArticle").on("click", function (event) {
     $("#articleAppendBox").empty();
     for (i = 0; i < 5; i++) {
       $("#articleAppendBox").append(` 
+      <a href="${response.articles[i].url}">
      <div class="media">
       <img src="${response.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
       <div class="media-body">
-        <h5 class=mt-0"> <a href="${response.articles[i].url}"> ${response.articles[i].title} </a> </h5>
-        <p> ${response.articles[i].content} </p>
+        <h5 class=mt-0" style="margin-left: 4px"> ${response.articles[i].title}  </h5>
+        <p style="margin-left: 4px"> ${response.articles[i].content} </p>
       </div>
     </div>
+    </a>
     <hr>
      `);
-    
+
     };
   });
 });
 
-$("#mostRecent").on("click", function(event) {
+$("#mostRecent").on("click", function (event) {
   event.preventDefault();
   var recentStories = "https://newsapi.org/v2/everything?q=+richmond+virginia&sortBy=publishedAt&apiKey=f14386004b984aab9c45f6dcf17b377f";
   console.log(recentStories);
   $.ajax({
     url: recentStories,
     method: "GET",
-  }).then(function(response) {
+  }).then(function (response) {
     $("#articleAppendBox").empty();
-  for (i = 0; i < 20; i++) {
+    for (i = 0; i < 20; i++) {
       $("#articleAppendBox").append(`
       <div class="media">
       <img src="${response.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="Broken">
@@ -207,7 +209,7 @@ $("#mostRecent").on("click", function(event) {
       </div>
     </div>
     <hr>
-      `) 
+      `)
     };
   });
 });
