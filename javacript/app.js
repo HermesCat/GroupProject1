@@ -17,6 +17,7 @@ var user = null;
 
 firebase.auth().onAuthStateChanged(function (currentUser) {
   if (currentUser) {
+    logIn()
     user = {
       email: currentUser.email,
       id: currentUser.uid,
@@ -25,6 +26,7 @@ firebase.auth().onAuthStateChanged(function (currentUser) {
   }
   user = null;
 });
+
 
 $("#register").on("click", function (event) {
   event.preventDefault();
@@ -35,7 +37,6 @@ $("#register").on("click", function (event) {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function (newUser) {
     logIn()
     return newUser.updateProfile({
-
     });
   })
     .then(function (user) {
@@ -62,9 +63,7 @@ $("#login").on("click", function (e) {
 
     // ...
   });
-  // Show Hide
   // $("#welcome").append(`Welcome ${email}`);  Need more work here!!!!
-
 });
 
 $("#logOff").on("click", function () {
@@ -73,9 +72,6 @@ $("#logOff").on("click", function () {
   }).catch(function (error) {
     // An error happened.
   });
-  // Show Hide    
-
-
 });
 
 function logIn() {
@@ -129,7 +125,6 @@ $("#masterSearch").on("click", function (search) {
 function renderButton() {
   $(".userButton").empty();
   for (i = 0; i < userKeywords.length; i++) {
-    var userSearch = $(".form-control").val().trim();
     var b = $("<button>")
     b.addClass("articles")
     b.attr("data-button", userKeywords[i])
@@ -148,11 +143,7 @@ function displayArticles(event) {
     articles = $(this).attr("data-button");
   }
 
-  console.log(articles);
-  var userSearch = $("#searchTerm").val().trim();
   var userStories = `https://newsapi.org/v2/everything?q=${articles}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
-  var searchStories = `https://newsapi.org/v2/everything?q=${userSearch}&apiKey=f14386004b984aab9c45f6dcf17b377f`;
-  console.log(userStories);
   $.ajax({
     url: userStories,
     method: "GET",
@@ -164,7 +155,7 @@ function displayArticles(event) {
     <div class="media-body">
       <h5 class=mt-0"> ${search.articles[i].title} </h5>
       <p> ${search.articles[i].description} </p>
-      <a href="${search.articles[i].url}"> ${search.articles[i].title} </a>
+      <a href="${search.articles[i].url}" target = "_blank"> ${search.articles[i].title} </a>
     </div>
   </div>
   <hr>
@@ -173,12 +164,60 @@ function displayArticles(event) {
   });
 };
 
+$("#topArticle").on("click", function (event) {
+  event.preventDefault();
+  var topStories = "https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=f14386004b984aab9c45f6dcf17b377f";
+  $.ajax({
+    url: topStories,
+    method: "GET"
+  }).then(function (response) {
+    $("#articleAppendBox").empty();
+    for (i = 0; i < 5; i++) {
+      $("#articleAppendBox").append(` 
+     <div class="media">
+      <img src="${response.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="...">
+      <div class="media-body">
+        <h5 class=mt-0"> <a href="${response.articles[i].url}"> ${response.articles[i].title} </a> </h5>
+        <p> ${response.articles[i].content} </p>
+      </div>
+    </div>
+    <hr>
+     `);
+    
+    };
+  });
+});
+
+$("#mostRecent").on("click", function(event) {
+  event.preventDefault();
+  var recentStories = "https://newsapi.org/v2/everything?q=+richmond+virginia&sortBy=publishedAt&apiKey=f14386004b984aab9c45f6dcf17b377f";
+  console.log(recentStories);
+  $.ajax({
+    url: recentStories,
+    method: "GET",
+  }).then(function(response) {
+    $("#articleAppendBox").empty();
+  for (i = 0; i < 20; i++) {
+      $("#articleAppendBox").append(`
+      <div class="media">
+      <img src="${response.articles[i].urlToImage}" height="150" width="150" class=align-self-start mr-3" alt="Broken">
+      <div class="media-body">
+        <h5 class=mt-0"> <a href="${response.articles[i].url}"> ${response.articles[i].title} </a> </h5>
+        <p> ${response.articles[i].description} </p>
+      </div>
+    </div>
+    <hr>
+      `) 
+    };
+  });
+});
+
 function storedData() {
-  
+
   var dataUp = {
     search: userKeywords,
   }
   database.ref().push(dataUp);
-}
+};
 
 // $(".userButton").on("click", ".articles", displayArticles);
