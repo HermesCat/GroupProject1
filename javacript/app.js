@@ -108,7 +108,8 @@ var userKeywords = [];
 // THIS IS THE SEARCH CLICK EVENT
 $("#masterSearch").on("click", function (search) {
   search.preventDefault();
-
+  
+  
   if ($("#storeKeywords").is(":checked") === true) {
     var newButton = $("#searchTerm").val().trim();
     userKeywords.push(newButton);
@@ -119,8 +120,19 @@ $("#masterSearch").on("click", function (search) {
   } else {
     displayArticles($("#searchTerm").val().trim());
     $("searchTerm").val("");
-  }
+  }  
+  mapSearch();
 });
+
+function mapSearch(){
+  $("#map").empty();
+  var placeSearch = $("#location").val().trim();
+  var newMap = `<iframe width="95%" height="200" frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?q=${placeSearch},va&key=AIzaSyBac2HUKDso4kbbD1NbvLWvtfeWvpdVuWA"
+  allowfullscreen></iframe>`
+  $("#map").append(newMap);
+}
+
 // CREATES BUTTONS BASED UPON THE ARRAY
 function renderButton() {
   $(".userButton").empty();
