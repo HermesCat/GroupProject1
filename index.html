@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My News Aggregate</title>
+  <title>Quick Aggregate</title>
   <!-- Bootstrap CDNs--------------->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="css/style.css">
   <!-- Firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 
 </head>
 
@@ -27,7 +29,7 @@
       <div class="row">
         <div class="col-6">
           <h1 id="mainTitle">
-            <span class="highlighter">Quick</span>Aggregate
+            <span class="highlighter">Quick</span> Aggregate
           </h1>
         </div>
         <!-- navs -->
@@ -48,69 +50,81 @@
             <div class="row">
               <div class="col-md-12" id="buttonList">
                 <!-- Button trigger modal -->
-                <button type="button" data-toggle="modal" data-target="#loginModal">
-                  Login
-                </button>
+                <div id="welcome">
+                  <button type="button" data-toggle="modal" data-target="#loginModal" style="display:show"
+                    id="loginButton">
+                    Login
+                  </button>
 
-                <!-- Modal -->
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate</h1>
-                      </div>
-                      <div class="modal-body">
-                        <h3>User Login</h3>
-                        <label for="searchTerm">Email Adress</label>
-                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
-                        <label for="searchTerm">Password</label>
-                        <input type="password" class="form-control" id="Password1">
+                  <!-- Modal -->
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true" id="loginModal">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate
+                          </h1>
+                        </div>
+                        <div class="modal-body">
+                          <h3>User Login</h3>
+                          <label for="searchTerm">Email Adress</label>
+                          <input type="text" class="form-control" id="emailInputLogin"
+                            placeholder="ex. jsmith@example.com">
+                          <label for="searchTerm">Password</label>
+                          <input type="password" class="form-control" id="passwordLogin">
 
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="hot" data-toggle="modal" data-target="#loginModal">Login</button>
-                        <button class="button" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="hot" data-toggle="modal" data-target="#loginModal"
+                            id="login">Login</button>
+                          <button class="button cancel" data-dismiss="modal">Cancel</button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- button 2 -->
-                <!-- Button trigger modal -->
-                <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal">
-                  Sign-Up
-                </button>
+                  <!-- button 2 -->
+                  <!-- Button trigger modal -->
+                  <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal" style="display:show"
+                    id="signUpButton">
+                    Sign-Up
+                  </button>
 
-                <!-- Modal -->
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                  aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate</h1>
-                      </div>
-                      <div class="modal-body">
-                        <h3>Sign-Up</h3>
-                        <label for="searchTerm">Email Adress</label>
-                        <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
-                        <label for="searchTerm">Password</label>
-                        <input type="password" class="form-control" id="Password1">
-                        <label for="searchTerm">Re-Type Password</label>
-                        <input type="password" class="form-control" id="Password2">
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="hot" data-toggle="modal"
-                          data-target="#signUpModal" id="register">Register</button>
-                        <button class="button" data-dismiss="modal">Cancel</button>
+                  <!-- Modal -->
+                  <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                    aria-labelledby="myLargeModalLabel" aria-hidden="true" id="signUpModal">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 id="mainTitle"><span class="highlighter">Quick</span>Aggregate
+                          </h1>
+                        </div>
+                        <div class="modal-body">
+                          <h3>Sign-Up</h3>
+                          <!-- <label for="searchTerm">Name</label>
+                                              <input type="text" class="form-control" id="userName"
+                                                  placeholder="Jane Doe"> -->
+                          <label for="searchTerm">Email Adress</label>
+                          <input type="text" class="form-control" id="emailInput" placeholder="ex. jsmith@example.com">
+                          <label for="searchTerm">Password</label>
+                          <input type="password" class="form-control" id="password1">
+                          <p class = "subText">*Must be 6 at least 6 characters long.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="hot" data-toggle="modal" data-target="#signUpModal"
+                            id="register">Register</button>
+                          <button class="button cancel" data-dismiss="modal">Cancel</button>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <button type="button" id="logOff" style="display:none">Log Off</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </header>
 
 
@@ -119,24 +133,22 @@
       <!-- This row will separate the two main elements of the page SEARCH/RESULTS -->
       <div class="row">
         <!---------- Search side ------------------------------------------------------------------------------------------------------------------------------------------------------------>
-        <div class="col-4">
+        <div class="col-4 col-xs-12">
           <div class="card">
             <div class="card-body">
               <h1 class="display-6">My Searches</h1>
               <p class="lead">These are your saved searches.</p>
               <div class="card" id="buttonCard">
-                <h3>Your Keywods</h3>
+                <h3>Your Keywords</h3>
                 <!-- The User Search Buttons will go here -->
                 <ul class="userButton">
-                  <button>Dogs</button>
-                  <button>Cats</button>
+                  <!-- <button id="businessBtn">Business</button>
+                  <button id="scienceBtn">News in Science</button>
                   <button>Penguins</button>
                   <button>Florida</button>
-                  <button>Fans</button>
-                  <button>Anime Girls</button>
+                  <button>Fans</button> -->
                 </ul>
               </div>
-
               <!-- This is the search result Column -->
               <div class="card-mb-4">
                 <div class="card-body">
@@ -144,18 +156,17 @@
                     <form>
                       <div class="form-group">
                         <label for="searchTerm">Search Term</label>
-                        <input type="text" class="form-control" id="search" placeholder="ex. Restaurants">
+                        <input type="text" class="form-control" id="searchTerm" placeholder="ex. Restaurants">
                         <label for="searchTerm">Location</label>
                         <input type="text" class="form-control" id="location" placeholder="ex. San Francisco">
-
                       </div>
+
                       <div class="row">
-                        <div class="col-md-4"> <button>Search</button> </div>
-                        <div class="col-md-8"><input type="checkbox" class="form-check-input" id="rememberMe">
-                          <label class="form-check-label" for="Remember" id="rememberText">Remember Me</label></div>
+                        <div class="col-md-4"> <button id="masterSearch">Search</button> </div>
+                        <div class="col-md-8"><input type="checkbox" class="form-check-input" id="storeKeywords">
+                          <label class="form-check-label" for="Remember" id="rememberME">Store Keywords</label></div>
                       </div>
                     </form>
-
                   </div>
                 </div>
               </div>
@@ -166,12 +177,15 @@
         <!--- results side ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
         <div class="col-8">
           <div class="card">
+            
             <div class="card-body">
               <h1 class="display-6">Search Results</h1>
             </div>
             <!-- Google map will be appended here. --------------------->
             <div class="" id="map">
-
+                <iframe width="95%" height="200" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=richmond,va&key=AIzaSyBac2HUKDso4kbbD1NbvLWvtfeWvpdVuWA"
+                allowfullscreen></iframe>
             </div>
             <!-- Top and most recent article buttons -->
             <div class="col-md-12" id="articleButtons">
@@ -180,88 +194,33 @@
               <!-- Articles and links will be posted here. Its a media box nested withing a card body-->
               <div class="card">
                 <div class="card-body" id="articleAppendBox">
-
                   <!-- we will append something like this with jQuery -->
-                  <div class="media">
-                    <img
-                      src="https://www.metro.us/sites/default/files/main/articles/2019/03/20/ncaa_free_college_basketball_tournament_live_stream_streaming_link.jpg"
-                      height="150" width="150" class="align-self-start mr-3" alt="...">
-                    <div class="media-body">
-                      <h5 class="mt-0">Duke Wins Again</h5>
-                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                        nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    </div>
-                  </div>
-                  <hr>
-                  <!-- this is the end of the first article -->
-                  <!-- we will append something like this with jQuery -->
-                  <div class="media">
-                    <img
-                      src="https://www.philly.com/resizer/FGaIoEePkpnEubol94Xe08rZx78=/1400x932/smart/arc-anglerfish-arc2-prod-pmn.s3.amazonaws.com/public/QKEZHVDLGVAONDCZTE5RJJWBTY.jpg"
-                      height="150" width="150" class="align-self-start mr-3" alt="...">
-                    <div class="media-body">
-                      <h5 class="mt-0">People Are Still Playing Soccer?</h5>
-                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                        nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    </div>
-                  </div>
-                  <hr>
-                  <!-- this is the end of the second article -->
-                  <!-- we will append something like this with jQuery -->
-                  <div class="media">
-                    <img
-                      src="https://pulse-static-files.s3.amazonaws.com/worldrugby/photo/2018/09/15/eead1477-29b0-4082-929a-9022c2051d27/1033513342.jpg"
-                      height="150" width="150" class="align-self-start mr-3" alt="...">
-                    <div class="media-body">
-                      <h5 class="mt-0">Is Rugby The New Footbal: Probably Not</h5>
-                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
-                        Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-                        nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                    </div>
-                  </div>
-                  <hr>
                   <!-- this is the end of the thrd article -->
                 </div>
               </div>
-
-
-
-
-
             </div>
           </div>
-
         </div>
       </div>
-
-
-
-
-
-
-
-
-
       <!-- end of container -->
     </div>
-
     <footer>
       <h4>My News Aggragate &copy;</h4>
     </footer>
     <!-- Out javascript file -->
 
-    <script src="javacript/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
       crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="javacript/app.js"></script>
+    <script>moment().format();</script>
 
 </body>
 
