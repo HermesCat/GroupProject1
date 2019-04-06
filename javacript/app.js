@@ -37,10 +37,6 @@ $("#register").on("click", function (event) {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function (newUser) {
     logIn()
     return newUser.updateProfile({
-<<<<<<< HEAD
-     
-=======
->>>>>>> 59e47a3cb6bff1230fe2e4ae8030af5ac59434b9
     });
   })
     .then(function (user) {

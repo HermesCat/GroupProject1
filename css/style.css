@@ -58,7 +58,7 @@ h1 .highlighter {
 }
 
 .nav-link {
-    decoration: none;
+    text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-weight: bold;
     color: red;
@@ -149,6 +149,7 @@ button:active {
     color: #ffffff;
 }
 
+<<<<<<< HEAD
 /*  media queries */
 
 
@@ -178,3 +179,15 @@ nav {
 
 }
 
+=======
+
+.things:link {
+    text-decoration: none;
+    color: black;
+}
+
+.things:visited {
+    text-decoration: none;
+    color: black;
+}
+>>>>>>> 32fa4376857aa44208de1fcd3ba3cd0413c8e082
