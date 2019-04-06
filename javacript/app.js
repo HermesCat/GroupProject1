@@ -35,7 +35,7 @@ $("#register").on("click", function (event) {
   firebase.auth().createUserWithEmailAndPassword(email, password).then(function (newUser) {
     logIn()
     return newUser.updateProfile({
-
+     
     });
   })
     .then(function (user) {
@@ -176,7 +176,8 @@ function displayArticles(event) {
 function storedData() {
   
   var dataUp = {
-    search: userKeywords,
+
+    search: userKeywords
   }
   database.ref().push(dataUp);
 }

@@ -82,6 +82,11 @@ h1 .highlighter {
     padding-left: 3px;
  }
 
+.subText  {
+    color: #8a8d91;
+    font-size: 12px;
+}
+
 .media:hover {
     background: #c5cad1;
     cursor: pointer;
