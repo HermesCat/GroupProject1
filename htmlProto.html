@@ -29,7 +29,7 @@
       <div class="row">
         <div class="col-6">
           <h1 id="mainTitle">
-            <span class="highlighter">My</span>News Aggregate
+            <span class="highlighter">Quick</span> Aggregate
           </h1>
         </div>
         <!-- navs -->
@@ -156,10 +156,10 @@
                       <div class="form-group">
                         <label for="searchTerm">Search Term</label>
                         <input type="text" class="form-control" id="searchTerm" placeholder="ex. Restaurants">
-                        <!-- <label for="searchTerm">Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="ex. San Francisco"> -->
+                        <label for="searchTerm">Location</label>
+                        <input type="text" class="form-control" id="location" placeholder="ex. San Francisco">
                       </div>
-                      
+
                       <div class="row">
                         <div class="col-md-4"> <button id="masterSearch">Search</button> </div>
                         <div class="col-md-8"><input type="checkbox" class="form-check-input" id="storeKeywords">
@@ -176,11 +176,15 @@
         <!--- results side ------------------------------------------------------------------------------------------------------------------------------------------------------------------>
         <div class="col-8">
           <div class="card">
+            
             <div class="card-body">
               <h1 class="display-6">Search Results</h1>
             </div>
             <!-- Google map will be appended here. --------------------->
             <div class="" id="map">
+                <iframe width="95%" height="200" frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?q=richmond,va&key=AIzaSyBac2HUKDso4kbbD1NbvLWvtfeWvpdVuWA"
+                allowfullscreen></iframe>
             </div>
             <!-- Top and most recent article buttons -->
             <div class="col-md-12" id="articleButtons">
@@ -202,20 +206,20 @@
     <footer>
       <h4>My News Aggragate &copy;</h4>
     </footer>
-  <!-- Out javascript file -->
+    <!-- Out javascript file -->
 
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
-  <script src="javacript/app.js"></script>
-  <script>moment().format();</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase-auth.js"></script>
+    <script src="javacript/app.js"></script>
+    <script>moment().format();</script>
 
 </body>
 
